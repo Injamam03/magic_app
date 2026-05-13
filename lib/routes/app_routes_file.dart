@@ -17,36 +17,36 @@ class AppRoutesFile {
       page: () => const SplashScreen(),
     ),
 
-    // ── Auth ──
+    // ── Auth — each screen has its own dedicated binding ──
     GetPage(
       name: AppRoutes.signInScreen,
       page: () => const SignInScreen(),
-      binding: AuthBindings(),
+      binding: SignInBinding(),
     ),
     GetPage(
       name: AppRoutes.signUpScreen,
       page: () => const SignUpScreen(),
-      binding: AuthBindings(),
+      binding: SignUpBinding(),
     ),
     GetPage(
       name: AppRoutes.signUpOtpScreen,
       page: () => const SignUpOtpScreen(),
-      binding: AuthBindings(),
+      binding: SignUpOtpBinding(),
     ),
     GetPage(
       name: AppRoutes.forgotPasswordScreen,
       page: () => const ForgotPasswordScreen(),
-      binding: AuthBindings(),
+      binding: ForgotPasswordBinding(),
     ),
     GetPage(
       name: AppRoutes.forgotVerifyOtpScreen,
       page: () => const ForgotVerifyOtpScreen(),
-      binding: AuthBindings(),
+      binding: ForgotVerifyOtpBinding(),
     ),
     GetPage(
       name: AppRoutes.resetPasswordScreen,
       page: () => const ResetPasswordScreen(),
-      binding: AuthBindings(),
+      binding: ResetPasswordBinding(),
     ),
   ];
 }
