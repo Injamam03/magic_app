@@ -1,5 +1,1 @@
-import 'package:get/get.dart';
-
-class SignUpOtpController extends GetxController {
-  
-}
+// Real implementation is in sign_up_otp_controller.dart

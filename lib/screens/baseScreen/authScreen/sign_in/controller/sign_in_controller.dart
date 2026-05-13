@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:magic_app/routes/app_routes.dart';
 
-// 👇 CHANGED FROM LoginController TO SignInController
 class SignInController extends GetxController {
-  late final TextEditingController phoneController;
+  late final TextEditingController emailController;
   late final TextEditingController passwordController;
 
   final RxBool isPasswordHidden = true.obs;
+  final RxBool isLoading = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    phoneController = TextEditingController();
+    emailController = TextEditingController();
     passwordController = TextEditingController();
   }
 
@@ -21,22 +21,24 @@ class SignInController extends GetxController {
   }
 
   void onLogin() {
-    final phone = phoneController.text.trim();
+    final email = emailController.text.trim();
     final password = passwordController.text.trim();
 
-    if (phone.isEmpty || password.isEmpty) {
+    if (email.isEmpty || password.isEmpty) {
       Get.snackbar(
         'Error',
         'Please fill in all fields',
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withAlpha(150),
+        backgroundColor: Colors.red.withOpacity(0.85),
         colorText: Colors.white,
+        margin: const EdgeInsets.all(16),
+        borderRadius: 12,
       );
       return;
     }
 
+    // TODO: Call login API
     // Get.offAllNamed(AppRoutes.mainScreen);
-    // TODO Add your login API call here
   }
 
   void onForgotPassword() {
@@ -49,8 +51,7 @@ class SignInController extends GetxController {
 
   @override
   void onClose() {
-    // It is good practice to uncomment these to prevent memory leaks!
-    phoneController.dispose();
+    emailController.dispose();
     passwordController.dispose();
     super.onClose();
   }

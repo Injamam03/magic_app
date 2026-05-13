@@ -2,36 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:magic_app/routes/app_routes.dart';
 
-class SignUpController extends GetxController {
-  late final TextEditingController nameController;
-  late final TextEditingController emailController;
-  late final TextEditingController passwordController;
+class ResetPasswordController extends GetxController {
+  late final TextEditingController newPasswordController;
   late final TextEditingController confirmPasswordController;
 
-  final RxBool isPasswordHidden = true.obs;
+  final RxBool isNewPasswordHidden = true.obs;
   final RxBool isConfirmPasswordHidden = true.obs;
   final RxBool isLoading = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    nameController = TextEditingController();
-    emailController = TextEditingController();
-    passwordController = TextEditingController();
+    newPasswordController = TextEditingController();
     confirmPasswordController = TextEditingController();
   }
 
-  void togglePassword() => isPasswordHidden.value = !isPasswordHidden.value;
+  void toggleNewPassword() =>
+      isNewPasswordHidden.value = !isNewPasswordHidden.value;
   void toggleConfirmPassword() =>
       isConfirmPasswordHidden.value = !isConfirmPasswordHidden.value;
 
-  void onSignUp() {
-    final name = nameController.text.trim();
-    final email = emailController.text.trim();
-    final password = passwordController.text.trim();
+  void onResetPassword() {
+    final newPass = newPasswordController.text.trim();
     final confirm = confirmPasswordController.text.trim();
 
-    if (name.isEmpty || email.isEmpty || password.isEmpty || confirm.isEmpty) {
+    if (newPass.isEmpty || confirm.isEmpty) {
       Get.snackbar(
         'Error', 'Please fill in all fields',
         snackPosition: SnackPosition.BOTTOM,
@@ -43,7 +38,19 @@ class SignUpController extends GetxController {
       return;
     }
 
-    if (password != confirm) {
+    if (newPass.length < 8) {
+      Get.snackbar(
+        'Error', 'Password must be at least 8 characters',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red.withOpacity(0.85),
+        colorText: Colors.white,
+        margin: const EdgeInsets.all(16),
+        borderRadius: 12,
+      );
+      return;
+    }
+
+    if (newPass != confirm) {
       Get.snackbar(
         'Error', 'Passwords do not match',
         snackPosition: SnackPosition.BOTTOM,
@@ -55,17 +62,21 @@ class SignUpController extends GetxController {
       return;
     }
 
-    // TODO: Call Sign Up API
-    Get.toNamed(AppRoutes.signUpOtpScreen, arguments: {'email': email});
+    // TODO: Reset Password API
+    Get.snackbar(
+      'Success', 'Password reset successfully!',
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.green.withOpacity(0.85),
+      colorText: Colors.white,
+      margin: const EdgeInsets.all(16),
+      borderRadius: 12,
+    );
+    Get.offAllNamed(AppRoutes.signInScreen);
   }
-
-  void onSignIn() => Get.back();
 
   @override
   void onClose() {
-    nameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
+    newPasswordController.dispose();
     confirmPasswordController.dispose();
     super.onClose();
   }

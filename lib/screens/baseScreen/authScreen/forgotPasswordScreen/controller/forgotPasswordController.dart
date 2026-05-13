@@ -1,3 +1,1 @@
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-
-class ForgotPasswordController extends GetxController {}
+// Real implementation is in forgot_password_controller.dart
