@@ -8,6 +8,9 @@ import 'package:magic_app/screens/baseScreen/authScreen/sign_in/sign_in_screen.d
 import 'package:magic_app/screens/baseScreen/authScreen/sign_up/sign_up_screen.dart';
 import 'package:magic_app/screens/baseScreen/authScreen/signUpVerifyOtpScreen/SignUpOtpScreen.dart';
 import 'package:magic_app/screens/baseScreen/splashScreen/splashScreen.dart';
+import 'package:magic_app/screens/homeScreen/magicScreen/magic_card_screen.dart';
+import 'package:magic_app/screens/homeScreen/magicScreen/magic_intro_screen.dart';
+import 'package:magic_app/screens/homeScreen/magicScreen/magic_result_screen.dart';
 
 class AppRoutesFile {
   static final List<GetPage> routes = [
@@ -44,6 +47,19 @@ class AppRoutesFile {
       name: AppRoutes.resetPasswordScreen,
       page: () => const ResetPasswordScreen(),
       binding: ResetPasswordBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.magicIntroScreen,
+      page: () => const MagicIntroScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.magicCardScreen,
+      page: () => const MagicCardScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.magicResultScreen,
+      page: () => const MagicResultScreen(),
     ),
   ];
 }

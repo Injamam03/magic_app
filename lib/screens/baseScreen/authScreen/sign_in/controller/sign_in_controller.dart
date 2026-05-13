@@ -38,7 +38,7 @@ class SignInController extends GetxController {
     }
 
     // TODO: Call login API
-    // Get.offAllNamed(AppRoutes.mainScreen);
+    Get.offAllNamed(AppRoutes.magicIntroScreen);
   }
 
   void onForgotPassword() {

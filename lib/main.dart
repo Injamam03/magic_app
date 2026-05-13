@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Magic',
-        initialRoute: AppRoutes.splashScreen,
+        initialRoute: AppRoutes.magicIntroScreen,
         getPages: AppRoutesFile.routes,
         defaultTransition: Transition.fadeIn,
         transitionDuration: const Duration(milliseconds: 400),

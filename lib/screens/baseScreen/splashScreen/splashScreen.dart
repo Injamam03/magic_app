@@ -111,14 +111,16 @@ class _SplashScreenState extends State<SplashScreen>
                               borderRadius: BorderRadius.circular(32.r),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFFFFB900)
-                                      .withOpacity(0.3),
+                                  color: const Color(
+                                    0xFFFFB900,
+                                  ).withOpacity(0.3),
                                   blurRadius: 40,
                                   spreadRadius: 10,
                                 ),
                                 BoxShadow(
-                                  color: const Color(0xFF2D1454)
-                                      .withOpacity(0.6),
+                                  color: const Color(
+                                    0xFF2D1454,
+                                  ).withOpacity(0.6),
                                   blurRadius: 20,
                                   spreadRadius: 5,
                                 ),
@@ -144,12 +146,12 @@ class _SplashScreenState extends State<SplashScreen>
                               ShaderMask(
                                 shaderCallback: (bounds) =>
                                     const LinearGradient(
-                                  colors: [
-                                    Color(0xFFFFD700),
-                                    Color(0xFFFFB900),
-                                    Color(0xFFFE9301),
-                                  ],
-                                ).createShader(bounds),
+                                      colors: [
+                                        Color(0xFFFFD700),
+                                        Color(0xFFFFB900),
+                                        Color(0xFFFE9301),
+                                      ],
+                                    ).createShader(bounds),
                                 child: Text(
                                   ConstString.appName.toUpperCase(),
                                   style: TextStyle(
@@ -206,9 +208,14 @@ class _SplashScreenState extends State<SplashScreen>
 
   List<Widget> _buildSparkles() {
     final sparklePositions = [
-      [0.1, 0.1], [0.85, 0.15], [0.2, 0.75],
-      [0.9, 0.7], [0.5, 0.08], [0.05, 0.5],
-      [0.75, 0.4], [0.3, 0.9],
+      [0.1, 0.1],
+      [0.85, 0.15],
+      [0.2, 0.75],
+      [0.9, 0.7],
+      [0.5, 0.08],
+      [0.05, 0.5],
+      [0.75, 0.4],
+      [0.3, 0.9],
     ];
     return sparklePositions.map((pos) {
       return Positioned(

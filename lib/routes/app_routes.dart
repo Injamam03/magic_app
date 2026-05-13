@@ -12,6 +12,10 @@ class AppRoutes {
   // Home (registered for future use)
   static const String mainScreen = '/main_screen';
 
+  static const String magicIntroScreen = '/magicIntroScreen';
+  static const String magicCardScreen = '/magicCardScreen';
+  static const String magicResultScreen = '/magicResultScreen';
+
   // Profile pages
   static const String aboutUsScreen = '/about_us_screen';
   static const String changePasswordScreen = '/change_password_screen';

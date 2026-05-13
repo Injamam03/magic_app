@@ -12,7 +12,8 @@ class ConstString {
   // ── Sign In ──
   static const String welcomeBack = "Welcome Back";
   static const String signIn = 'Sign In';
-  static const String signInSubtitle = "Welcome back! Please enter your details.";
+  static const String signInSubtitle =
+      "Welcome back! Please enter your details.";
   static const String email = "Email";
   static const String password = "Password";
   static const String rememberMe = "Remember me";
@@ -56,4 +57,8 @@ class ConstString {
   static const String enterNewPassword = "Enter new password";
   static const String resetPassword = "Reset Password";
   static const String backToSignIn = "Back to Sign In";
+
+  static const String magicIntroScreen = '/magic_intro_screen';
+  static const String magicCardScreen = '/magic_card_screen';
+  static const String magicResultScreen = '/magic_result_screen';
 }
