@@ -85,7 +85,7 @@ class CustomTextField extends StatelessWidget {
     this.isPassWordSecondValidationController,
     this.contentPadding,
     this.borderRadius = 12, // default border radius
-    this.fillColor = const Color(0xff180D2B), // default fill color
+    this.fillColor = const Color(0xFF0D0520), // default fill color
     this.borderColor = const Color(0x19FFFFFF), // Colors.white.withAlpha(25)
     this.focusedBorderColor = const Color(0xFFA89BC9), // default focused border
     this.errorBorderColor,

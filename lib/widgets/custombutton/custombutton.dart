@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../constant/app_colors.dart';
+
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback? onTap;
@@ -14,17 +16,20 @@ class CustomButton extends StatelessWidget {
   final double borderRadius;
   final TextStyle? textStyle;
 
+  // ========= Gradient =========
+  final List<Color>? gradientColors;
+  final AlignmentGeometry gradientBegin;
+  final AlignmentGeometry gradientEnd;
+
   // ========= Border =========
   final bool hasBorder;
   final Color? borderColor;
   final double borderWidth;
 
-  // ========= Icon =========
   final Widget? icon;
   final double iconSize;
   final double iconSpacing;
 
-  // ========= Text =========
   final double fontSize;
   final FontWeight? fontWeight;
   final EdgeInsetsGeometry? padding;
@@ -39,24 +44,27 @@ class CustomButton extends StatelessWidget {
     this.width = double.infinity,
 
     // ========= Style defaults =========
-    this.backgroundColor = const Color(0xFF2969CD), //
-    this.textColor =  const Color(0xFFFFFFFF),
-    this.borderRadius = 14,
+    this.backgroundColor = ConstColor.white,
+    this.textColor = ConstColor.black,
+    this.borderRadius = 16,
     this.textStyle,
+
+    // ========= Gradient defaults =========
+    this.gradientColors = const [Color(0xFFFFB900), Color(0xFFFF6900)],
+    this.gradientBegin = Alignment.topCenter,
+    this.gradientEnd = Alignment.bottomCenter,
 
     // ========= Border defaults =========
     this.hasBorder = false,
     this.borderColor,
     this.borderWidth = 1.5,
 
-    // ========= Icon defaults =========
     this.icon,
     this.iconSize = 24,
     this.iconSpacing = 10,
 
-    // ========= Text defaults =========
-    this.fontSize = 16,
-    this.fontWeight = FontWeight.w600,
+    this.fontSize = 18,
+    this.fontWeight = FontWeight.bold,
     this.padding = EdgeInsets.zero,
   });
 
@@ -71,13 +79,20 @@ class CustomButton extends StatelessWidget {
           width: width,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: backgroundColor,
+            color: gradientColors == null ? backgroundColor : null,
+            gradient: gradientColors != null
+                ? LinearGradient(
+                    colors: gradientColors!,
+                    begin: gradientBegin,
+                    end: gradientEnd,
+                  )
+                : null,
             borderRadius: BorderRadius.circular(borderRadius),
             border: hasBorder
                 ? Border.all(
-              color: borderColor ?? backgroundColor,
-              width: borderWidth,
-            )
+                    color: borderColor ?? backgroundColor,
+                    width: borderWidth,
+                  )
                 : null,
           ),
           child: Row(
@@ -85,16 +100,13 @@ class CustomButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (icon != null) ...[
-                SizedBox(
-                  width: iconSize,
-                  height: iconSize,
-                  child: icon,
-                ),
+                SizedBox(width: iconSize, height: iconSize, child: icon),
                 SizedBox(width: iconSpacing),
               ],
               Text(
                 text,
-                style: textStyle ??
+                style:
+                    textStyle ??
                     TextStyle(
                       color: textColor,
                       fontSize: fontSize,

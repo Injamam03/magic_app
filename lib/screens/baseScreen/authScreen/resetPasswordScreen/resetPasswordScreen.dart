@@ -6,6 +6,7 @@ import 'package:magic_app/constant/app_const_string.dart';
 import 'package:magic_app/utils/gap.dart';
 import 'package:magic_app/widgets/custom_text/custom_text.dart';
 import 'package:magic_app/widgets/custom_text_Field/custom_text_Field.dart';
+import 'package:magic_app/widgets/custombutton/custombutton.dart';
 import 'controller/reset_password_controller.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
@@ -16,15 +17,26 @@ class ResetPasswordScreen extends StatelessWidget {
     final controller = Get.find<ResetPasswordController>();
 
     return Scaffold(
+      appBar: AppBar(
+        title: CustomText(
+          title: ConstString.resetPassword,
+          textSize: 16.sp,
+          fontWeight: FontWeight.bold,
+          textColor: ConstColor.white,
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: const Color(0xFF0D0520),
+        elevation: 0,
+      ),
       backgroundColor: const Color(0xFF0D0520),
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xFF0D0520), Color(0xFF1A0A35), Color(0xFF2D1454)],
-          ),
-        ),
+        // decoration: const BoxDecoration(
+        //   gradient: LinearGradient(
+        //     begin: Alignment.topCenter,
+        //     end: Alignment.bottomCenter,
+        //     colors: [Color(0xFF0D0520), Color(0xFF1A0A35), Color(0xFF2D1454)],
+        //   ),
+        // ),
         child: SafeArea(
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -32,7 +44,7 @@ class ResetPasswordScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Gap(height: 20.h),
-                _BackButton(),
+
                 Gap(height: 40.h),
 
                 // Icon
@@ -130,7 +142,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 Gap(height: 36.h),
 
                 // Reset Button
-                _GoldButton(
+                CustomButton(
                   text: ConstString.resetPassword,
                   onTap: controller.onResetPassword,
                 ),
@@ -138,65 +150,6 @@ class ResetPasswordScreen extends StatelessWidget {
                 Gap(height: 32.h),
               ],
             ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _BackButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => Get.back(),
-      child: Container(
-        width: 40.w,
-        height: 40.h,
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.08),
-          borderRadius: BorderRadius.circular(12.r),
-          border: Border.all(color: Colors.white.withOpacity(0.1)),
-        ),
-        child: Icon(Icons.arrow_back_ios_new, color: ConstColor.white, size: 16.sp),
-      ),
-    );
-  }
-}
-
-class _GoldButton extends StatelessWidget {
-  final String text;
-  final VoidCallback? onTap;
-  const _GoldButton({required this.text, this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 54.h,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [Color(0xFFFFD700), Color(0xFFFFB900), Color(0xFFFE9301)],
-          ),
-          borderRadius: BorderRadius.circular(14.r),
-          boxShadow: [
-            BoxShadow(
-              color: const Color(0xFFFFB900).withOpacity(0.35),
-              blurRadius: 20,
-              offset: const Offset(0, 6),
-            ),
-          ],
-        ),
-        alignment: Alignment.center,
-        child: Text(
-          text,
-          style: TextStyle(
-            color: const Color(0xFF1A0A35),
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.5,
           ),
         ),
       ),

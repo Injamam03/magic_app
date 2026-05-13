@@ -4,20 +4,24 @@ import 'package:get/get.dart';
 import 'package:magic_app/routes/app_routes.dart';
 
 class ForgotVerifyOtpController extends GetxController {
-  final List<TextEditingController> otpControllers =
-      List.generate(4, (_) => TextEditingController());
+  final List<TextEditingController> otpControllers = List.generate(
+    4,
+    (_) => TextEditingController(),
+  );
   final List<FocusNode> focusNodes = List.generate(4, (_) => FocusNode());
 
   final RxInt resendTimer = 60.obs;
   final RxBool canResend = false.obs;
   final RxBool isLoading = false.obs;
+  final RxString emailObs = ''.obs;
   Timer? _timer;
 
-  String get email => Get.arguments?['email'] ?? '';
+  String get email => emailObs.value;
 
   @override
   void onInit() {
     super.onInit();
+    emailObs.value = Get.arguments?['email'] ?? '';
     startTimer();
   }
 
@@ -48,9 +52,10 @@ class ForgotVerifyOtpController extends GetxController {
   void onVerify() {
     if (otp.length < 4) {
       Get.snackbar(
-        'Error', 'Please enter the complete OTP',
+        'Error',
+        'Please enter the complete OTP',
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.85),
+        backgroundColor: Colors.red.withValues(alpha: 0.85),
         colorText: Colors.white,
         margin: const EdgeInsets.all(16),
         borderRadius: 12,

@@ -6,6 +6,7 @@ import 'package:magic_app/constant/app_const_string.dart';
 import 'package:magic_app/utils/gap.dart';
 import 'package:magic_app/widgets/custom_text/custom_text.dart';
 import 'package:magic_app/widgets/custom_text_Field/custom_text_Field.dart';
+import 'package:magic_app/widgets/custombutton/custombutton.dart';
 import 'controller/sign_up_controller.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -18,13 +19,13 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF0D0520),
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xFF0D0520), Color(0xFF1A0A35), Color(0xFF2D1454)],
-          ),
-        ),
+        // decoration: const BoxDecoration(
+        //   gradient: LinearGradient(
+        //     begin: Alignment.topCenter,
+        //     end: Alignment.bottomCenter,
+        //     colors: [Color(0xFF0D0520), Color(0xFF1A0A35), Color(0xFF2D1454)],
+        //   ),
+        // ),
         child: SafeArea(
           child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -124,7 +125,7 @@ class SignUpScreen extends StatelessWidget {
                 Gap(height: 32.h),
 
                 // Sign Up Button
-                _GoldButton(
+                CustomButton(
                   text: ConstString.signUp,
                   onTap: controller.onSignUp,
                 ),
@@ -196,46 +197,6 @@ class _FieldLabel extends StatelessWidget {
       textSize: 14.sp,
       fontWeight: FontWeight.w600,
       textColor: ConstColor.white,
-    );
-  }
-}
-
-class _GoldButton extends StatelessWidget {
-  final String text;
-  final VoidCallback? onTap;
-  const _GoldButton({required this.text, this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 54.h,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [Color(0xFFFFD700), Color(0xFFFFB900), Color(0xFFFE9301)],
-          ),
-          borderRadius: BorderRadius.circular(14.r),
-          boxShadow: [
-            BoxShadow(
-              color: const Color(0xFFFFB900).withOpacity(0.35),
-              blurRadius: 20,
-              offset: const Offset(0, 6),
-            ),
-          ],
-        ),
-        alignment: Alignment.center,
-        child: Text(
-          text,
-          style: TextStyle(
-            color: const Color(0xFF1A0A35),
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.5,
-          ),
-        ),
-      ),
     );
   }
 }

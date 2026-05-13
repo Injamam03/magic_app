@@ -7,6 +7,7 @@ import 'package:magic_app/constant/app_const_string.dart';
 import 'package:magic_app/utils/gap.dart';
 import 'package:magic_app/widgets/custom_text/custom_text.dart';
 import 'package:magic_app/widgets/custom_text_Field/custom_text_Field.dart';
+import 'package:magic_app/widgets/custombutton/custombutton.dart';
 import 'controller/sign_in_controller.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -20,15 +21,11 @@ class SignInScreen extends StatelessWidget {
       backgroundColor: const Color(0xFF0D0520),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF0D0520),
-              Color(0xFF1A0A35),
-              Color(0xFF2D1454),
-            ],
-          ),
+          // gradient: LinearGradient(
+          //   begin: Alignment.topCenter,
+          //   end: Alignment.bottomCenter,
+          //   colors: [Color(0xFF0D0520), Color(0xFF1A0A35), Color(0xFF2D1454)],
+          // ),
         ),
         child: SafeArea(
           child: SingleChildScrollView(
@@ -50,8 +47,8 @@ class SignInScreen extends StatelessWidget {
                           boxShadow: [
                             BoxShadow(
                               color: const Color(0xFFFFB900).withOpacity(0.25),
-                              blurRadius: 24,
-                              spreadRadius: 4,
+                              blurRadius: 10,
+                              spreadRadius: 2,
                             ),
                           ],
                         ),
@@ -69,13 +66,13 @@ class SignInScreen extends StatelessWidget {
                           colors: [
                             Color(0xFFFFD700),
                             Color(0xFFFFB900),
-                            Color(0xFFFE9301),
+                            // Color(0xFFFE9301),
                           ],
                         ).createShader(bounds),
                         child: Text(
                           ConstString.appName.toUpperCase(),
                           style: TextStyle(
-                            fontSize: 22.sp,
+                            fontSize: 18.sp,
                             fontWeight: FontWeight.w900,
                             color: Colors.white,
                             letterSpacing: 5,
@@ -175,7 +172,7 @@ class SignInScreen extends StatelessWidget {
                 Gap(height: 32.h),
 
                 // Login Button
-                _GoldButton(
+                CustomButton(
                   text: ConstString.logIn,
                   onTap: controller.onLogin,
                 ),
@@ -207,48 +204,6 @@ class SignInScreen extends StatelessWidget {
                 Gap(height: 32.h),
               ],
             ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-/// Reusable golden gradient button
-class _GoldButton extends StatelessWidget {
-  final String text;
-  final VoidCallback? onTap;
-
-  const _GoldButton({required this.text, this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 54.h,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            colors: [Color(0xFFFFD700), Color(0xFFFFB900), Color(0xFFFE9301)],
-          ),
-          borderRadius: BorderRadius.circular(14.r),
-          boxShadow: [
-            BoxShadow(
-              color: const Color(0xFFFFB900).withOpacity(0.35),
-              blurRadius: 20,
-              offset: const Offset(0, 6),
-            ),
-          ],
-        ),
-        alignment: Alignment.center,
-        child: Text(
-          text,
-          style: TextStyle(
-            color: const Color(0xFF1A0A35),
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 0.5,
           ),
         ),
       ),
