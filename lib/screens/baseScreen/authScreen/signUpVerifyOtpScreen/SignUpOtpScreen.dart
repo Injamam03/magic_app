@@ -33,20 +33,18 @@ class SignUpOtpScreen extends StatelessWidget {
               children: [
                 Gap(height: 20.h),
 
-                // Back button
                 _BackButton(),
                 Gap(height: 40.h),
 
-                // Icon
                 Center(
                   child: Container(
                     width: 72.w,
                     height: 72.w,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFFFB900).withOpacity(0.12),
+                      color: const Color(0xFFFFB900).withValues(alpha: 0.12),
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: const Color(0xFFFFB900).withOpacity(0.3),
+                        color: const Color(0xFFFFB900).withValues(alpha: 0.3),
                         width: 1.5,
                       ),
                     ),
@@ -60,7 +58,6 @@ class SignUpOtpScreen extends StatelessWidget {
 
                 Gap(height: 24.h),
 
-                // Title
                 Center(
                   child: CustomText(
                     title: ConstString.otpVerification,
@@ -71,54 +68,58 @@ class SignUpOtpScreen extends StatelessWidget {
                   ),
                 ),
                 Gap(height: 10.h),
+
+                // ✅ Obx দিয়ে emailObs observe করা হচ্ছে
                 Center(
-                  child: Obx(() => CustomText(
-                    title: '${ConstString.signUpOtpSubtitle}\n${controller.email}',
-                    textSize: 14.sp,
-                    textColor: ConstColor.fadeColor,
-                    textAlign: TextAlign.center,
-                  )),
+                  child: Obx(
+                    () => CustomText(
+                      title:
+                          '${ConstString.signUpOtpSubtitle}\n${controller.emailObs.value}',
+                      textSize: 14.sp,
+                      textColor: ConstColor.fadeColor,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                 ),
 
                 Gap(height: 40.h),
 
-                // OTP Boxes
                 _OtpBoxes(controller: controller),
 
                 Gap(height: 32.h),
 
-                // Resend Row
                 Center(
-                  child: Obx(() => Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomText(
-                        title: ConstString.didntReceiveCode,
-                        textSize: 14.sp,
-                        textColor: ConstColor.fadeColor,
-                      ),
-                      GestureDetector(
-                        onTap: controller.canResend.value
-                            ? controller.onResend
-                            : null,
-                        child: CustomText(
-                          title: controller.canResend.value
-                              ? ConstString.resendCode
-                              : '${ConstString.resendCode} (${controller.resendTimer.value}s)',
+                  child: Obx(
+                    () => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CustomText(
+                          title: ConstString.didntReceiveCode,
                           textSize: 14.sp,
-                          textColor: controller.canResend.value
-                              ? ConstColor.yellow1
-                              : ConstColor.fadeColor,
-                          fontWeight: FontWeight.w600,
+                          textColor: ConstColor.fadeColor,
                         ),
-                      ),
-                    ],
-                  )),
+                        GestureDetector(
+                          onTap: controller.canResend.value
+                              ? controller.onResend
+                              : null,
+                          child: CustomText(
+                            title: controller.canResend.value
+                                ? ConstString.resendCode
+                                : '${ConstString.resendCode} (${controller.resendTimer.value}s)',
+                            textSize: 14.sp,
+                            textColor: controller.canResend.value
+                                ? ConstColor.yellow1
+                                : ConstColor.fadeColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
 
                 Gap(height: 40.h),
 
-                // Verify Button
                 _GoldButton(
                   text: ConstString.verify,
                   onTap: controller.onVerify,
@@ -165,14 +166,14 @@ class _OtpBoxes extends StatelessWidget {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(14.r),
                 borderSide: BorderSide(
-                  color: Colors.white.withOpacity(0.1),
+                  color: Colors.white.withValues(alpha: 0.1),
                   width: 1.2,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(14.r),
                 borderSide: BorderSide(
-                  color: Colors.white.withOpacity(0.12),
+                  color: Colors.white.withValues(alpha: 0.12),
                   width: 1.2,
                 ),
               ),
@@ -201,9 +202,9 @@ class _BackButton extends StatelessWidget {
         width: 40.w,
         height: 40.h,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.08),
+          color: Colors.white.withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(12.r),
-          border: Border.all(color: Colors.white.withOpacity(0.1)),
+          border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
         ),
         child: Icon(
           Icons.arrow_back_ios_new,
@@ -234,7 +235,7 @@ class _GoldButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(14.r),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFFFFB900).withOpacity(0.35),
+              color: const Color(0xFFFFB900).withValues(alpha: 0.35),
               blurRadius: 20,
               offset: const Offset(0, 6),
             ),

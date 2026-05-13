@@ -25,38 +25,43 @@ class SignUpController extends GetxController {
   void toggleConfirmPassword() =>
       isConfirmPasswordHidden.value = !isConfirmPasswordHidden.value;
 
-  void onSignUp() {
-    final name = nameController.text.trim();
-    final email = emailController.text.trim();
-    final password = passwordController.text.trim();
-    final confirm = confirmPasswordController.text.trim();
-
-    if (name.isEmpty || email.isEmpty || password.isEmpty || confirm.isEmpty) {
+  void onSignUp() async {
+    // Validation
+    if (nameController.text.isEmpty ||
+        emailController.text.isEmpty ||
+        passwordController.text.isEmpty) {
       Get.snackbar(
-        'Error', 'Please fill in all fields',
+        'Error',
+        'Please fill all fields',
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.85),
+        backgroundColor: Colors.red.withValues(alpha: 0.85),
         colorText: Colors.white,
-        margin: const EdgeInsets.all(16),
-        borderRadius: 12,
       );
       return;
     }
 
-    if (password != confirm) {
-      Get.snackbar(
-        'Error', 'Passwords do not match',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.85),
-        colorText: Colors.white,
-        margin: const EdgeInsets.all(16),
-        borderRadius: 12,
-      );
-      return;
-    }
+    isLoading.value = true;
 
-    // TODO: Call Sign Up API
-    Get.toNamed(AppRoutes.signUpOtpScreen, arguments: {'email': email});
+    try {
+      // API call যদি থাকে await দিয়ে করুন
+      // await yourApiService.signUp(...);
+
+      // Navigate
+      Get.toNamed(
+        AppRoutes.signUpOtpScreen,
+        arguments: {'email': emailController.text.trim()},
+      );
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        e.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red.withValues(alpha: 0.85),
+        colorText: Colors.white,
+      );
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   void onSignIn() => Get.back();

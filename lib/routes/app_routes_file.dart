@@ -11,13 +11,7 @@ import 'package:magic_app/screens/baseScreen/splashScreen/splashScreen.dart';
 
 class AppRoutesFile {
   static final List<GetPage> routes = [
-    // ── Splash ──
-    GetPage(
-      name: AppRoutes.splashScreen,
-      page: () => const SplashScreen(),
-    ),
-
-    // ── Auth — each screen has its own dedicated binding ──
+    GetPage(name: AppRoutes.splashScreen, page: () => const SplashScreen()),
     GetPage(
       name: AppRoutes.signInScreen,
       page: () => const SignInScreen(),
@@ -28,11 +22,14 @@ class AppRoutesFile {
       page: () => const SignUpScreen(),
       binding: SignUpBinding(),
     ),
+
+    // ✅ BindingsBuilder সরিয়ে SignUpOtpBinding ব্যবহার
     GetPage(
       name: AppRoutes.signUpOtpScreen,
       page: () => const SignUpOtpScreen(),
       binding: SignUpOtpBinding(),
     ),
+
     GetPage(
       name: AppRoutes.forgotPasswordScreen,
       page: () => const ForgotPasswordScreen(),
