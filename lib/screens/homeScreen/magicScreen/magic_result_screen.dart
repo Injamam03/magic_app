@@ -20,7 +20,7 @@ class MagicResultScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFF0D0520), Color(0xFF1A0A35), Color(0xFF2D1454)],
+            colors: [Color(0xFF0D0520), Color(0xFF0D0520), Color(0xFF0D0520)],
           ),
         ),
         child: SafeArea(
@@ -40,12 +40,13 @@ class MagicResultScreen extends StatelessWidget {
 
                 CustomText(
                   title: '🎩 তোমার ভাবা সংখ্যা হলো',
-                  textSize: 18.sp,
+                  textSize: 22.sp,
                   textColor: ConstColor.fadeColor,
                   textAlign: TextAlign.center,
+                  fontWeight: FontWeight.w600,
                 ),
 
-                Gap(height: 20.h),
+                Gap(height: 60.h),
 
                 // Big Number Display
                 Obx(
@@ -76,14 +77,14 @@ class MagicResultScreen extends StatelessWidget {
                       '${controller.guessedNumber.value}',
                       style: TextStyle(
                         color: const Color(0xFF1A0A35),
-                        fontSize: 56.sp,
+                        fontSize: 50.sp,
                         fontWeight: FontWeight.w900,
                       ),
                     ),
                   ),
                 ),
 
-                Gap(height: 32.h),
+                Gap(height: 80.h),
 
                 CustomText(
                   title: '✨ কী অবাক! Magic কাজ করেছে!',
@@ -151,13 +152,13 @@ class MagicResultScreen extends StatelessWidget {
                         ],
                       ),
                       borderRadius: BorderRadius.circular(16.r),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0xFFFFB900).withValues(alpha: 0.4),
-                          blurRadius: 20,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
+                      // boxShadow: [
+                      //   BoxShadow(
+                      //     color: const Color(0xFFFFB900).withValues(alpha: 0.4),
+                      //     blurRadius: 20,
+                      //     offset: const Offset(0, 2),
+                      //   ),
+                      // ],
                     ),
                     alignment: Alignment.center,
                     child: Row(

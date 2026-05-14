@@ -95,8 +95,8 @@ class MagicCardScreen extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 4,
-                          crossAxisSpacing: 6.w,
-                          mainAxisSpacing: 2.h,
+                          crossAxisSpacing: 22.w,
+                          mainAxisSpacing: 14.h,
                           childAspectRatio: 1,
                         ),
                         itemCount: cardNumbers.length,
@@ -128,7 +128,7 @@ class MagicCardScreen extends StatelessWidget {
                               '$num',
                               style: TextStyle(
                                 color: const Color(0xFFFFEB3B),
-                                fontSize: 16.sp,
+                                fontSize: 20.sp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -148,7 +148,7 @@ class MagicCardScreen extends StatelessWidget {
                         child: GestureDetector(
                           onTap: controller.onNo,
                           child: Container(
-                            height: 54.h,
+                            height: 45.h,
                             decoration: BoxDecoration(
                               color: Colors.white.withValues(alpha: 0.08),
                               borderRadius: BorderRadius.circular(14.r),
@@ -187,7 +187,7 @@ class MagicCardScreen extends StatelessWidget {
                         child: GestureDetector(
                           onTap: controller.onYes,
                           child: Container(
-                            height: 54.h,
+                            height: 45.h,
                             decoration: BoxDecoration(
                               gradient: const LinearGradient(
                                 colors: [

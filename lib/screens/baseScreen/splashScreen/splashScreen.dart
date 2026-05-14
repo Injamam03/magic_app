@@ -48,13 +48,13 @@ class _SplashScreenState extends State<SplashScreen>
     _slideAnimation = Tween<double>(begin: 30.0, end: 0.0).animate(
       CurvedAnimation(
         parent: _animationController,
-        curve: const Interval(0.4, 1.0, curve: Curves.easeOut),
+        curve: const Interval(0.3, 1.0, curve: Curves.easeOut),
       ),
     );
 
     _animationController.forward();
 
-    Future.delayed(const Duration(milliseconds: 2800), () {
+    Future.delayed(const Duration(milliseconds: 1600), () {
       if (mounted) {
         Get.offAllNamed(AppRoutes.signInScreen);
       }
@@ -74,17 +74,18 @@ class _SplashScreenState extends State<SplashScreen>
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF0D0520),
-              Color(0xFF1A0A35),
-              Color(0xFF2D1454),
-              Color(0xFF1A0A35),
-            ],
-            stops: [0.0, 0.3, 0.6, 1.0],
-          ),
+          // gradient: LinearGradient(
+          //   begin: Alignment.topLeft,
+          color: Color(0xFF0D0520),
+          //   end: Alignment.bottomRight,
+          //   colors: [
+          //     Color(0xFF0D0520),
+          //     Color(0xFF1A0A35),
+          //     Color(0xFF2D1454),
+          //     Color(0xFF1A0A35),
+          //   ],
+          //   stops: [0.0, 0.3, 0.6, 1.0],
+          // ),
         ),
         child: Stack(
           children: [
@@ -105,10 +106,10 @@ class _SplashScreenState extends State<SplashScreen>
                         ScaleTransition(
                           scale: _scaleAnimation,
                           child: Container(
-                            width: 140.w,
-                            height: 140.w,
+                            width: 130.w,
+                            height: 130.h,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(32.r),
+                              borderRadius: BorderRadius.circular(28.r),
                               boxShadow: [
                                 BoxShadow(
                                   color: const Color(
@@ -136,7 +137,7 @@ class _SplashScreenState extends State<SplashScreen>
                           ),
                         ),
 
-                        Gap(height: 28.h),
+                        Gap(height: 56.h),
 
                         // App name with slide animation
                         Transform.translate(
@@ -183,23 +184,23 @@ class _SplashScreenState extends State<SplashScreen>
             ),
 
             // Bottom version text
-            Positioned(
-              bottom: 40.h,
-              left: 0,
-              right: 0,
-              child: AnimatedBuilder(
-                animation: _fadeAnimation,
-                builder: (context, _) => Opacity(
-                  opacity: _fadeAnimation.value,
-                  child: CustomText(
-                    title: 'v1.0.0',
-                    textSize: 12.sp,
-                    textColor: ConstColor.fadeColor,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            ),
+            // Positioned(
+            //   bottom: 40.h,
+            //   left: 0,
+            //   right: 0,
+            //   child: AnimatedBuilder(
+            //     animation: _fadeAnimation,
+            //     builder: (context, _) => Opacity(
+            //       opacity: _fadeAnimation.value,
+            //       child: CustomText(
+            //         title: 'v1.0.0',
+            //         textSize: 12.sp,
+            //         textColor: ConstColor.fadeColor,
+            //         textAlign: TextAlign.center,
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
