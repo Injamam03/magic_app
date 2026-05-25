@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:magic_app/constant/app_assert_image.dart';
-import 'package:magic_app/constant/app_colors.dart';
 import 'package:magic_app/constant/app_const_string.dart';
 import 'package:magic_app/routes/app_routes.dart';
 import 'package:magic_app/utils/gap.dart';
@@ -56,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     Future.delayed(const Duration(milliseconds: 1600), () {
       if (mounted) {
-        Get.offAllNamed(AppRoutes.signInScreen);
+        Get.offAllNamed(AppRoutes.magicIntroScreen);
       }
     });
   }
@@ -114,14 +113,14 @@ class _SplashScreenState extends State<SplashScreen>
                                 BoxShadow(
                                   color: const Color(
                                     0xFFFFB900,
-                                  ).withOpacity(0.3),
+                                  ).withAlpha(60),
                                   blurRadius: 40,
                                   spreadRadius: 10,
                                 ),
                                 BoxShadow(
                                   color: const Color(
                                     0xFF2D1454,
-                                  ).withOpacity(0.6),
+                                  ).withAlpha(120),
                                   blurRadius: 20,
                                   spreadRadius: 5,
                                 ),
@@ -228,7 +227,7 @@ class _SplashScreenState extends State<SplashScreen>
             opacity: _fadeAnimation.value * 0.6,
             child: Icon(
               Icons.star,
-              color: const Color(0xFFFFB900).withOpacity(0.4),
+              color: const Color(0xFFFFB900).withAlpha(80),
               size: 8,
             ),
           ),
