@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -55,7 +56,12 @@ class _SplashScreenState extends State<SplashScreen>
 
     Future.delayed(const Duration(milliseconds: 1600), () {
       if (mounted) {
-        Get.offAllNamed(AppRoutes.magicIntroScreen);
+        final user = FirebaseAuth.instance.currentUser;
+        if (user != null && user.emailVerified) {
+          Get.offAllNamed(AppRoutes.magicIntroScreen);
+        } else {
+          Get.offAllNamed(AppRoutes.signInScreen);
+        }
       }
     });
   }

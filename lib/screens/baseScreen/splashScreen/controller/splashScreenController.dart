@@ -12,6 +12,8 @@ class SplashController extends GetxController {
   void navigateToWelcome() {
     Future.delayed(const Duration(seconds: 2), () {
       final user = FirebaseAuth.instance.currentUser;
+      print('====== USER: $user'); // এটা add করো
+      print('====== EMAIL VERIFIED: ${user?.emailVerified}');
       if (user != null && user.emailVerified) {
         Get.offAllNamed(AppRoutes.magicIntroScreen);
       } else {
