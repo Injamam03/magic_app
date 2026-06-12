@@ -5,4 +5,9 @@ class ConstAssertImage {
   static const String backgroundImg = 'assets/images/background_pic.png';
   static const String logoImg = 'assets/images/logo_img.png';
   static const String magicLogo = 'assets/images/magic_logo.png';
+
+
+
+
+  static const String googleIcon = 'assets/images/googleIcom.webp';
 }

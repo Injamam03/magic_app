@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../constant/app_colors.dart';
 
 class CustomButton extends StatelessWidget {
@@ -34,44 +33,40 @@ class CustomButton extends StatelessWidget {
   final FontWeight? fontWeight;
   final EdgeInsetsGeometry? padding;
 
+  // ========= Loading =========
+  final bool isLoading;
+  final Color loadingColor;
+
   const CustomButton({
     super.key,
     required this.text,
     this.onTap,
-
-    // ======== Layout defaults =========
     this.height = 52,
     this.width = double.infinity,
-
-    // ========= Style defaults =========
     this.backgroundColor = ConstColor.white,
     this.textColor = ConstColor.black,
     this.borderRadius = 16,
     this.textStyle,
-
-    // ========= Gradient defaults =========
     this.gradientColors = const [Color(0xFFFFB900), Color(0xFFFF6900)],
     this.gradientBegin = Alignment.topCenter,
     this.gradientEnd = Alignment.bottomCenter,
-
-    // ========= Border defaults =========
     this.hasBorder = false,
     this.borderColor,
     this.borderWidth = 1.5,
-
     this.icon,
     this.iconSize = 24,
     this.iconSpacing = 10,
-
     this.fontSize = 18,
     this.fontWeight = FontWeight.bold,
     this.padding = EdgeInsets.zero,
+    this.isLoading = false,
+    this.loadingColor = ConstColor.black,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: isLoading ? null : onTap,
       child: Padding(
         padding: padding!,
         child: Container(
@@ -82,31 +77,40 @@ class CustomButton extends StatelessWidget {
             color: gradientColors == null ? backgroundColor : null,
             gradient: gradientColors != null
                 ? LinearGradient(
-                    colors: gradientColors!,
-                    begin: gradientBegin,
-                    end: gradientEnd,
-                  )
+              colors: gradientColors!,
+              begin: gradientBegin,
+              end: gradientEnd,
+            )
                 : null,
             borderRadius: BorderRadius.circular(borderRadius),
             border: hasBorder
                 ? Border.all(
-                    color: borderColor ?? backgroundColor,
-                    width: borderWidth,
-                  )
+              color: borderColor ?? backgroundColor,
+              width: borderWidth,
+            )
                 : null,
           ),
-          child: Row(
+          child: isLoading
+              ? SizedBox(
+            width: 24,
+            height: 24,
+            child: CircularProgressIndicator(
+              color: loadingColor,
+              strokeWidth: 2.5,
+            ),
+          )
+              : Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (icon != null) ...[
-                SizedBox(width: iconSize, height: iconSize, child: icon),
+                SizedBox(
+                    width: iconSize, height: iconSize, child: icon),
                 SizedBox(width: iconSpacing),
               ],
               Text(
                 text,
-                style:
-                    textStyle ??
+                style: textStyle ??
                     TextStyle(
                       color: textColor,
                       fontSize: fontSize,
